@@ -22,7 +22,7 @@ class Square:
     @position.setter
     def position(self, value):
         if (
-                isinstance(value, tuple)
+                isinstance(value, tuple) and len(value) == 2
                 and all(isinstance(v, int) and v >= 0 for v in value)
         ):
             self.__position = value
