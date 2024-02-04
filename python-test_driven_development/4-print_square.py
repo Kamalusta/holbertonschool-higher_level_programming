@@ -6,6 +6,9 @@ f*cing function
 
 
 def print_square(size):
+    """
+    calc square
+    """
     if type(size) is not int:
         raise TypeError("size must be an integer")
     if size < 0:
