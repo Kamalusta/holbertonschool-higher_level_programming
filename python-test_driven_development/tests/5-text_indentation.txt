@@ -2,16 +2,13 @@
 5. I love text indentation
 ===============================
 
-
-Import module:
-==============
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 
 
 Test cases with expected output:
 
->>> text_indentation("Hello?")
-Hello?
+>>> text_indentation("txt:")
+txt:
 <BLANKLINE>
 
 
