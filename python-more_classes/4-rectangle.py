@@ -47,7 +47,8 @@ class Rectangle:
     def __str__(self):
         result = ''
         for i in range(self.__height):
-            result += self.__width * '#'
-            if i < self.__height - 1:
-                result += '\n'
+            result += self.__width * '#' + '\n'
         return result
+
+    def __repr__(self):
+        return f'Rectangle({self.__width}, {self.__height})'
