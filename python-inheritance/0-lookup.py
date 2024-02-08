@@ -3,6 +3,7 @@
 everything
 '''
 
+
 def lookup(obj):
     ''' looking everything function '''
     return dir(obj)
