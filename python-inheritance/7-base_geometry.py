@@ -11,7 +11,7 @@ class BaseGeometry:
 
     def integer_validator(self, name=None, value=None):
         if name is None or value is None:
-            raise TypeError("integer_validator() missing"
+            raise TypeError("integer_validator() missing "
                             "required positional arguments")
         if type(value) is not int:
             raise TypeError(f"{name} must be an integer")
