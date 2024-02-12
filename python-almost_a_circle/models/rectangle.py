@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 '''
 this will create a rectangle an give it width, height x and y value
+area function returns area of rectangkle
+display function prints rectangle with # sign
 '''
 from models.base import Base
 
