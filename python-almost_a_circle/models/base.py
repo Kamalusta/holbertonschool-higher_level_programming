@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-'''doc'''
+'''
+this is base class. it will count instances
+'''
 
 
 class Base:
-    '''doc'''
+    '''this is base class. it will count instances'''
 
     __nb_objects = 0
 
