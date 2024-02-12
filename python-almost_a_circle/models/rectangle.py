@@ -75,10 +75,12 @@ class Rectangle(Base):
             print('#' * self.width)
 
     def __str__(self):
+        '''str return a sentence'''
         return (f"[{self.__class__.__name__}] ({self.id}) "
                 f"{self.x}/{self.y} - {self.width}/{self.height}")
 
     def update(self, *args):
+        ''' gets arguments for updating'''
         if len(args) > 0:
             self.id = args[0]
         if len(args) > 1:
