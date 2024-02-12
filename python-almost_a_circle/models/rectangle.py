@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 '''
-this will create a rectangle
+this will create a rectangle an give it width, height x and y value
 '''
 from models.base import Base
 
 
 class Rectangle(Base):
+    '''this will create a rectangle'''
     def __init__(self, width, height, x=0, y=0, id=None):
         self.width = width
         self.height = height
