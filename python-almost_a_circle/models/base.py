@@ -3,6 +3,7 @@
 this is base class. it will count instances
 '''
 import json
+import os
 
 
 class Base:
@@ -57,11 +58,12 @@ class Base:
     def load_from_file(cls):
         '''return list of instances'''
         outputlist = []
-        with open(f"{cls.__name__}.json", encoding="UTF-8") as rfile:
-            readed = rfile.read()
-        if readed is None:
+        name = f"{cls.__name__}.json"
+        if not os.path.exists(name):
             outputlist = []
         else:
+            with open(name, encoding="UTF-8") as rfile:
+                readed = rfile.read()
             sfile = cls.from_json_string(readed)
             for ls in sfile:
                 outputlist.append(cls.create(**ls))
