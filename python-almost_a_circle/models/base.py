@@ -59,7 +59,10 @@ class Base:
         outputlist = []
         with open(f"{cls.__name__}.json", encoding="UTF-8") as rfile:
             readed = rfile.read()
-        sfile = cls.from_json_string(readed)
-        for ls in sfile:
-            outputlist.append(cls.create(**ls))
+        if readed is None:
+            outputlist = []
+        else:
+            sfile = cls.from_json_string(readed)
+            for ls in sfile:
+                outputlist.append(cls.create(**ls))
         return outputlist
