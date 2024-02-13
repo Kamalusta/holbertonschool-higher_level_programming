@@ -52,3 +52,14 @@ class Base:
             dummy = cls(2)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        '''return list of instances'''
+        outputlist = []
+        with open(f"{cls.__name__}.json", encoding="UTF-8") as rfile:
+            readed = rfile.read()
+        sfile = cls.from_json_string(readed)
+        for ls in sfile:
+            outputlist.append(cls.create(**ls))
+        return outputlist
