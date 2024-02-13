@@ -29,7 +29,7 @@ class Base:
         '''save the data to json file'''
         mylist = []
         if list_objs is None:
-            return "[]"
+            mylist = []
         else:
             for i in list_objs:
                 mylist.append(i.to_dictionary())
