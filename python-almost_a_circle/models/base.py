@@ -42,3 +42,10 @@ class Base:
                 mylist.append(i.to_dictionary())
         with open(f"{cls.__name__}.json", 'w', encoding="UTF-8") as wfile:
             wfile.write(Base.to_json_string(mylist))
+
+    @classmethod
+    def create(cls, **dictionary):
+        ''' create instance'''
+        dummy = cls(2, 2)
+        dummy.update(**dictionary)
+        return dummy
