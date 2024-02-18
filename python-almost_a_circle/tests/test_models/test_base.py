@@ -8,12 +8,17 @@ class test_base(unittest.TestCase):
     '''doc '''
 
     def test_base_id(self):
-        b1 = Base(3)
-        self.assertEqual(b1.id, 3)
+        self.assertEqual(Base(3).id, 3)
 
     def test_baseid_node(self):
-        b1 = Base()
-        self.assertEqual(b1.id, 1)
+        self.assertEqual(Base().id, 1)
+
+    def test_to_json(self):
+        dictionary = {"id": 10}
+        json_dictionary = Base.to_json_string([dictionary])
+        self.assertEqual(json_dictionary, '[{"id": 10}]')
+        self.assertEqual(Base.to_json_string([]), '[]')
+        self.assertEqual(Base.to_json_string(None), '[]')
 
 
 if __name__ == '__main__':
