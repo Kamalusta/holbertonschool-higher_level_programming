@@ -2,6 +2,7 @@
 ''' test cases'''
 from models.rectangle import Rectangle
 import unittest
+import os
 
 
 class Test_Rectangle(unittest.TestCase):
@@ -14,6 +15,7 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(b1.x, 3)
         self.assertEqual(b1.y, 4)
         self.assertEqual(b1.id, 5)
+        self.assertEqual(str(b1), '[Rectangle] (5) 3/4 - 10/2')
 
     def test_area(self):
         b1 = Rectangle(10, 2)
@@ -70,6 +72,54 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(dummy1.width, 1)
         dummy3 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 })
         self.assertEqual(str(dummy3), '[Rectangle] (89) 3/4 - 1/2' ) 
+
+    def test_save_to_file(self):
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", encoding="UTF-8") as fread:
+            self.assertEqual(fread.read(), '[]')
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", encoding="UTF-8") as fread:
+            self.assertEqual(fread.read(), '[]')
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
+        Rectangle.save_to_file([Rectangle(1, 2, id = 5)])
+        with open("Rectangle.json", encoding="UTF-8") as fread:
+            self.assertEqual(fread.read(), '[{"id": 5, "width": 1, "height": 2, "x": 0, "y": 0}]')
+
+    def test_load_from_file(self):
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
+        res = Rectangle.load_from_file()
+        self.assertEqual(res, [])
+            
+    def test_load_from_file2(self):
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
+
+        r1 = Rectangle(5, 5)
+
+        input = [r1]
+        Rectangle.save_to_file(input)
+        output = Rectangle.load_from_file()
+
+        self.assertEqual(input[0].__str__(), output[0].__str__())
+        
+        
+
         
 if __name__ == '__main__':
     unittest.main()
