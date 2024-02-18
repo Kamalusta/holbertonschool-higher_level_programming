@@ -12,6 +12,7 @@ class test_base(unittest.TestCase):
 
     def test_baseid_node(self):
         self.assertEqual(Base().id, 1)
+        self.assertEqual(Base().id, 2)
 
     def test_to_json(self):
         dictionary = {"id": 10}
@@ -19,6 +20,11 @@ class test_base(unittest.TestCase):
         self.assertEqual(json_dictionary, '[{"id": 10}]')
         self.assertEqual(Base.to_json_string([]), '[]')
         self.assertEqual(Base.to_json_string(None), '[]')
+
+    def test_from_json(self):
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string("[]"), [])
+        self.assertEqual(Base.from_json_string('[{"id": 89}]'), [{"id": 89}])
 
 
 if __name__ == '__main__':
