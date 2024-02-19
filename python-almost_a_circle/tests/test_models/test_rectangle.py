@@ -3,6 +3,8 @@
 from models.rectangle import Rectangle
 import unittest
 import os
+from io import StringIO
+from unittest.mock import patch
 
 
 class Test_Rectangle(unittest.TestCase):
@@ -116,15 +118,57 @@ class Test_Rectangle(unittest.TestCase):
             os.remove("Rectangle.json")
         except:
             pass
-
         r1 = Rectangle(5, 5)
-
         input = [r1]
         Rectangle.save_to_file(input)
         output = Rectangle.load_from_file()
-
         self.assertEqual(input[0].__str__(), output[0].__str__())
-        
+
+    def test_display1(self):
+        r0 = Rectangle(2, 5)
+        expected_output = "##\n##\n##\n##\n##\n"
+        with patch("sys.stdout", new=StringIO()) as fake_out:
+            r0.display()
+            self.assertEqual(fake_out.getvalue(), expected_output)
+
+    def test_display_2(self):
+        r1 = Rectangle(2, 2)
+        res = "##\n##\n"
+        with patch("sys.stdout", new=StringIO()) as str_out:
+            r1.display()
+            self.assertEqual(str_out.getvalue(), res)
+
+        r1.width = 5
+        res = "#####\n#####\n"
+        with patch("sys.stdout", new=StringIO()) as str_out:
+            r1.display()
+            self.assertEqual(str_out.getvalue(), res)
+
+    def test_display_3(self):
+        r1 = Rectangle(5, 4, 1, 1)
+        res = "\n #####\n #####\n #####\n #####\n"
+        with patch("sys.stdout", new=StringIO()) as str_out:
+            r1.display()
+            self.assertEqual(str_out.getvalue(), res)
+
+    def test_display_4(self):
+        r1 = Rectangle(3, 2)
+        res = "###\n###\n"
+        with patch("sys.stdout", new=StringIO()) as str_out:
+            r1.display()
+            self.assertEqual(str_out.getvalue(), res)
+
+        r1.x = 4
+        res = "    ###\n    ###\n"
+        with patch("sys.stdout", new=StringIO()) as str_out:
+            r1.display()
+            self.assertEqual(str_out.getvalue(), res)
+
+        r1.y = 2
+        res = "\n\n    ###\n    ###\n"
+        with patch("sys.stdout", new=StringIO()) as str_out:
+            r1.display()
+            self.assertEqual(str_out.getvalue(), res)
         
 
         
