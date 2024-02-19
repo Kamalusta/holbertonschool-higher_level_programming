@@ -16,6 +16,13 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(b1.y, 4)
         self.assertEqual(b1.id, 5)
         self.assertEqual(str(b1), '[Rectangle] (5) 3/4 - 10/2')
+        b1 = Rectangle(10, 2)
+        self.assertEqual(str(b1), '[Rectangle] (4) 0/0 - 10/2')
+        b1 = Rectangle(10, 2, 3)
+        self.assertEqual(str(b1), '[Rectangle] (5) 3/0 - 10/2')
+        b1 = Rectangle(10, 2, 3, 4)
+        self.assertEqual(str(b1), '[Rectangle] (6) 3/4 - 10/2')
+        
 
     def test_area(self):
         b1 = Rectangle(10, 2)
@@ -33,7 +40,7 @@ class Test_Rectangle(unittest.TestCase):
 
     def test_valueError(self):
         with self.assertRaises(ValueError):
-            Rectangle(0, 1)
+            Rectangle(1, 0)
         with self.assertRaises(ValueError):
             Rectangle(-1, 1)
         with self.assertRaises(ValueError):
