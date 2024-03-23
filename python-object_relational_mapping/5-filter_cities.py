@@ -17,7 +17,6 @@ on cities.state_id=states.id WHERE states.name
 LIKE BINARY %s ORDER BY cities.id"""
     cur.execute(query, (sys.argv[4],))
     rows = cur.fetchall()
-    for row in rows:
-        print("%s," % row, end=" ")
+    print(', '.join(map(lambda x: x[0], rows)))
     cur.close()
     db.close()
