@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-this script retrive data form a database with MySQLdb modul
+this script retrive data which starting with 'N'
+form a database with MySQLdb modul
 """
 
 
