@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-''' this script retrive data form a database with MySQLdb modul '''
+""" 
+this script retrive data form a database with MySQLdb modul
+"""
+
+
 import MySQLdb
 import sys
 
