@@ -2,6 +2,7 @@
 """doc"""
 
 
+import sqlalchemy
 from model_state import Base
 from sqlalchemy import ForeignKey
 from sqlalchemy import Column, Integer, String
