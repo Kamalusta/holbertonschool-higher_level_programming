@@ -17,4 +17,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
     instance = session.query(State).order_by(State.id)[0]
-    print(f"{instance.id}: {instance.name}")
+    if instance is null:
+         print("Nothing")
+    else:
+        print(f"{instance.id}: {instance.name}")
+    session.close()
